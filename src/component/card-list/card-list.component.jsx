@@ -1,12 +1,14 @@
 import React from 'react'
 import './card-list.style.css'
+import { Card } from '../card/card.component';
 export const CardList = props => {
     return (
       <div className="cardList">
         {props.grpOfMonsters.map(monster=> (
-          <h1 key={monster.id}>{monster.name}</h1>
+          <Card key= {monster.id} monsters ={monster}/>
         ))
         }
       </div>
-    );
-}
+    )
+}   
+
