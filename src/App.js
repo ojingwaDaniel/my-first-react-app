@@ -15,6 +15,9 @@ class App extends Component{
     .then((response)=>response.json())
     .then((data)=>this.setState({monsters : data}))
   }
+  changeHandler = e=>{
+    this.setState({ searchCatch: e.target.value });
+  }
   render(){
     const{monsters,searchCatch} = this.state
     const filteredMonsters = monsters.filter(monster=>monster.name.toLowerCase().includes(searchCatch.toLowerCase())
@@ -23,9 +26,7 @@ class App extends Component{
       <div className="App">
         <SearchBox
           placeholder="search monster"
-          changeHandler={(e) => {
-            this.setState({ searchCatch: e.target.value });
-          }}
+          changeHandler={this.changeHandler}
         />
         <CardList grpOfMonsters={filteredMonsters} />
       </div>
